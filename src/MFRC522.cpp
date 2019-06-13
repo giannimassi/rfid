@@ -167,7 +167,7 @@ MFRC522::StatusCode MFRC522::PCD_CalculateCRC(	byte *data,		///< In: Pointer to 
 	// TODO check/modify for other architectures than Arduino Uno 16bit
 
 	// Wait for the CRC calculation to complete. Each iteration of the while-loop takes 17.73us.
-	for (uint16_t i = 5000; i > 0; i--) {
+	for (uint16_t i = 50000000; i > 0; i--) {
 		// DivIrqReg[7..0] bits are: Set2 reserved reserved MfinActIRq reserved CRCIRq reserved reserved
 		byte n = PCD_ReadRegister(DivIrqReg);
 		if (n & 0x04) {									// CRCIRq bit set - calculation done
